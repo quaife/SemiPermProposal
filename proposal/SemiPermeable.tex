@@ -16,6 +16,7 @@ citecolor = {blue}
 \usepackage{nsf}
 \usepackage{paralist}
 \usepackage{todonotes}
+\usepackage{stmaryrd}
 
 \usepackage[T1]{fontenc}
 \usepackage{ae,aecompl}
@@ -173,8 +174,8 @@ past work on osmophoresis (both theoretical and experimental) failed to
 provide a complete explanation for contradicting findings of the
 dependence of osmophoretic velocity on various factors such as fluid
 viscosity and vesicle radius~\cite{anderson1983, anderson1986,
-gordon1981, nardi1999} \todo[inline]{Must be other unknowns such as
-distribution of semi-permeable regions}.  One reason for the lack of
+gordon1981, nardi1999}. \todo[inline]{Must be other unknowns such as
+distribution of semi-permeable regions}  One reason for the lack of
 detailed investigation on osmophoresis is attributed to the fact that
 the osmophoresis is a completely different propulsion mechanism from
 other common phoretic swimming strategies such as diffusiophoresis,
@@ -187,7 +188,9 @@ interactions~\cite{anderson1986,anderson1989}. The PIs hypothesize that
 such a mechanism, which is largely under-appreciated by the community,
 is actually more likely to occur in nature than other phoretic motions
 due to the abundance of the chemical gradients in biological
-environments. Recent reports on the dynamics of {\em
+environments. \todo[inline]{Reviewer 1 is critical that there is not
+enough evidence that osmophoresis is likely to be more important than
+the other methods of transport} Recent reports on the dynamics of {\em
 E.~Coli}~\cite{rosko2017} and tumor cells~\cite{stroka2014} induced by
 osmotic pressure gradients also strengthen this speculation. 
 
@@ -284,16 +287,24 @@ problems featuring mechanically induced cellular function.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Preliminary Results\label{sec:preliminary_results}} The PIs
 have research capabilities to conduct both experiments (SS), modeling
-(YNY), and simulations (BQ) to investigate the motion of colloidal
-particles via solute gradients.  Using the developed experimental setup
-and numerical modeling, the PIs propose to investigate osmophoresis as a
-propulsion mechanism for both vesicles and biological cells. 
+(YNY), and numerical simulations (BQ) to investigate the motion of
+colloidal particles via solute gradients.  Using the developed
+experimental setup and numerical modeling, the PIs propose to
+investigate osmophoresis as a propulsion mechanism for both vesicles and
+biological cells. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Experimental Tools (PI Sangwoo Shin)}
 \label{subsection:exp_tools}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{Microfluidics for evaluating the motion of particles driven by chemical gradients\label{subsubsec:microfluidics}}
+The experimental research will be conducted at PI Shin's lab at the
+University of Hawaii at Manoa.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Microfluidics for evaluating the motion of particles
+driven by chemical gradients}
+\label{subsubsec:microfluidics}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 PI Shin has demonstrated a microfluidic tool for quantifying colloidal
 migration induced by solute gradients that can be easily compared to an
 analytical solution for the transient solute concentration profile in a
@@ -330,8 +341,10 @@ time dependent, as occurs when a change in chemical concentration occurs
 at the pore entrance. To observe the dynamics, experiments utilizing a
 step-like initial concentration profile are desired since the solution
 to diffusion equation in a finite space with a constant boundary
-condition is readily available.  We designed such microfluidic
-experiments (Figure~\ref{fig:fig3}b) by inserting in the main channel an
+condition is readily available.  \todo[inline]{Reviewer 1 argued that a
+gradual concentration gradient should be examined since this is what
+would occur because of mixing} We designed such microfluidic experiments
+(Figure~\ref{fig:fig3}b) by inserting in the main channel an
 immiscible fluid, e.g.~an oil droplet or air bubble, to separate the
 leading solution, which fills in the dead-end channel with concentration
 $c_i$, with a second immiscible solution that has different solute
@@ -524,9 +537,17 @@ the drop as in the Darcy drop case.
 \subsection{High-fidelity numerical simulations of suspensions} 
 \label{subsec:numerics}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{itemize}
+  \item BIE formulation
+  \item Adhesion
+  \item Challenges with suspensions (e.g.~quadrature)
+  \item Adaptive time stepping
+\end{itemize}
 
-\noindent
-\underline{{\bf Summary:}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Summary}
+\label{sec:summary}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Osmophoresis, the propulsion of a semi-permeable vesicle driven by the
 osmosis through the membrane, is hypothesized to be responsible for the
 biological fluid dynamics that involve vesicle migration and assembly,
@@ -548,12 +569,15 @@ are motivated by biological processes that involve vesicle transport
 the hydrodynamics and electrohydrodynamnics of vesicles by both
 asymptotic analyses and numerical simulations. Recently PI Young has
 incorporated the porous medium (either Darcy or Brinkman fluid) enclosed
-inside a viscous drop or a vesicle.  This model allows the porous
-structure to deform along with deformable membrane in a dynamic fluid
-flow, thus making it possible to study osmophoresis of a vesicle or a
-cell (see \S\ref{subsubsec:aim1_math}).  Finally, PI Quaife has
-developed high-fidelity numerical methods to simulate vesicle
-suspensions in both confined and unconfined geometries (see \S\ref{}).
+inside a viscous drop or a vesicle (see \S\ref{subsec:math_modeling}).
+This model allows the porous structure to deform along with deformable
+membrane in a dynamic fluid flow, thus making it possible to study
+osmophoresis of a vesicle or a cell (see \S\ref{subsubsec:aim1_math}).
+Finally, PI Quaife has developed high-fidelity numerical methods to
+simulate vesicle suspensions in both confined and unconfined geometries
+(see \S\ref{subsec:numerics}). \todo[inline]{Point to a section that is
+to be written about what will be done numerically in the proposed
+research.}
 
 By combining microfluidic experiments, theoretical modeling, and
 numerical simulations, the PIs aim to first understand osmophoresis
@@ -706,9 +730,10 @@ the deformation and osmophoresis of a vesicle.  Using variational
 principle, $j_w$ is found to be
 \begin{equation}
 \label{eq:jw}
- j_w =-\kappa\left(RT\left[c\right] + {\bf F}_{\mbox{mem}}\cdot{\bf n}\right),
+ j_w =-\kappa\left(RT \llbracket c \rrbracket + 
+   \mathbf{F}_{\mbox{mem}} \cdot \mathbf{n}\right),
 \end{equation}
-with $[c]$ denoting the jump in solute concentration $c$ across the
+with $\llbracket c \rrbracket$ denoting the jump in solute concentration $c$ across the
 membrane, $\kappa$ the water permeability constant, $R$ the gas
 constant, and $T$ the temperature of the fluid.  The force balance on
 the membrane is also derived from the variational principle,
@@ -900,7 +925,9 @@ ${\bf u}_i = j_w {\bf n}_i$ and the solute flux across the $i$-th layer
 (denoted as $\Gamma_i$) can be expressed as
 \begin{align}
 \label{eq:solute_flux}
-\left({\bf u}_i c_i - D\nabla c_i\right){\bf n}_i &= -\kappa \left(RT[c]_i + {\bf F}_{mem}\rvert_{\Gamma_i}\cdot{\bf n}_i\right)-D\nabla c_i {\bf n}_i,
+\left(\mathbf{u}_i c_i - D\nabla c_i\right)\mathbf{n}_i = -\kappa
+  \left(RT\llbracket c \rrbracket_i + \mathbf{F}_{mem}\rvert_{\Gamma_i} 
+  \cdot \mathbf{n}_i\right)-D\nabla c_i \mathbf{n}_i,
 \end{align}
 where the permeability $\kappa$ to solute molecules is assumed to be the
 same for all layers. The above equation is the same as the solute flux
@@ -1031,7 +1058,10 @@ due to osmophoretic vesicles.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Delivery of drug cargos in deep, confined pore
-spaces\label{subsubsec:delivery_drug_cargos}}
+spaces}
+\label{subsubsec:delivery_drug_cargos}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\todo[inline]{Reviewer 1 was critical of the drug delivery section.}
 {\em In vivo} targeted drug delivery requires drug molecules to
 accumulate within a target zone~\cite{bae2011}. 
 %%  	
@@ -1052,7 +1082,6 @@ this regard, osmophoresis can be a potential mechanism for the effective
 delivery of drug cargos (which are typically lipid vesicles) in deep
 dead-end pores, as demonstrated in
 Figure~\ref{fig:Microfluidic_dead-end} and Figure~\ref{fig:DeepPores}b. 
-
 
 Chemicals are secreted and/or absorbed in such a way that a natural
 gradient in the dead-end pore arises from the top to the deep end of the
@@ -1114,6 +1143,8 @@ be regular expenditures.
 \section{Educational Impacts and Outreach Program}
 \label{sec:Educational_plans}
 \vspace*{-7pt}
+
+\todo[inline]{Reviewer 1 was critical of the educational impact}
 
 An important component of this proposal is the interdisciplinary
 education and training of both undergraduate and graduate students. The
