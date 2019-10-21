@@ -17,6 +17,7 @@ citecolor = {blue}
 \usepackage{paralist}
 \usepackage{todonotes}
 \usepackage{stmaryrd}
+\usepackage{tikz,pgfplots}
 
 \usepackage[T1]{fontenc}
 \usepackage{ae,aecompl}
@@ -54,49 +55,6 @@ citecolor = {blue}
 \usepackage{epsf,color}
 
 \input vs_macros.tex
-\newcommand{\invis}{\textcolor{white}}
-\newcommand{\beq}{\begin{equation}}
-\newcommand{\eeq}{\end{equation}}
-\newcommand{\beqs}{\begin{eqnarray}}
-\newcommand{\eeqs}{\end{eqnarray}}
-\newcommand{\kappaF}{$\kappa^{\rm fast}_0$}
-\newcommand{\kon}{k_{\rm on}}
-\newcommand{\koff}{k_{\rm off}}
-\newcommand{\rhoAZ}{$\rho_{\rm AZ}$}
-\newcommand{\fx}{{\bf x}}
-\newcommand{\fX}{{\bf X}}
-\newcommand{\ff}{{\bf f}}
-\newcommand{\mA}{{\bf A}}
-\newcommand{\mI}{{\bf I}}
-\newcommand{\mU}{{\bf U}_0}
-\newcommand{\ut}{{\mathbf t}}
-\newcommand{\un}{{\mathbf n}}
-\newcommand{\ub}{{\mathbf b}}
-\newcommand{\xa}{{\mathbf x}_{\alpha}}
-\newcommand{\xaa}{{\mathbf x}_{\alpha\alpha}}
-\newcommand{\fF}{{\bf F}}
-\newcommand{\fP}{{\bf P}}
-\newcommand{\fn}{{\bf n}}
-\newcommand{\fy}{{\bf y}}
-\newcommand{\mup}{{\bf u}'}
-\newcommand{\mR}{{\bf R}}
-%\newcommand{\hmRk}{\hat{\bf R}_{lk}}
-\newcommand{\hmRk}{\hat{\bf R}'}
-%\newcommand{\hmRkp}{\hat{\bf R}_{k'}}
-\newcommand{\hmRkp}{\hat{\bf R}'}
-%\newcommand{\mRk}{{\bf R}_{lk}}
-\newcommand{\mRk}{{\bf R}'}
-%\newcommand{\mRkp}{{\bf R}_{lk'}}
-\newcommand{\mRkp}{{\bf R}'}
-\newcommand{\us}{\hat{\bf s}}
-\newcommand{\uxi}{{\bf x}_{is}}
-\newcommand{\ux}{{\bf x}_{s}}
-\newcommand{\uxl}{{\bf x}_{ls}}
-\newcommand{\usi}{\hat{\bf s}_i}
-\newcommand{\usj}{\hat{\bf s}_j}
-\newcommand{\bmu}{\bar{\mu}}
-\newcommand{\Cal}{Ca\textsuperscript{2+}\xspace}
-
 
 %\newcounter{sectnumber}
 %\newcounter{subsectnumber}[sectnumber]
@@ -111,6 +69,9 @@ citecolor = {blue}
 %\stepcounter{subsectnumber}
 %{\bf \arabic{sectnumber}.\arabic{subsectnumber}. #1}
 %}
+%
+%\usepgfplotslibrary{external}
+%\tikzexternalize
 
 
 \begin{document}
@@ -243,6 +204,8 @@ properties and experimental conditions, and optical microscopy combined
 with image analysis to quantify the motion of the vesicles. We will also
 utilize numerical simulations and reduced-order analytical models to
 gain further insights into the experimental observations.
+\todo[inline]{Reviewer 2 wanted to see more on reduced order models and
+numerics in general}
 
 This collaborative proposal will investigate osmophoresis as an
 effective propulsion mechanism for semi-permeable vesicles.  Largely
@@ -537,12 +500,40 @@ the drop as in the Darcy drop case.
 \subsection{High-fidelity numerical simulations of suspensions} 
 \label{subsec:numerics}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{itemize}
-  \item BIE formulation
-  \item Adhesion
-  \item Challenges with suspensions (e.g.~quadrature)
-  \item Adaptive time stepping
-\end{itemize}
+Vesicle suspensions in a Stokesian fluid can be reformulated as an
+integral equation formulation~\cite{qua-bir2014, qua-bir2016}. A no-slip
+boundary condition imposed on the $i^{\mathrm{th}}$ vesicle is 
+\begin{align}
+  \frac{d\xx_i}{dt} = \sum_{j=1}^{m} \SS_{ij}[\ff_j](\xx), \quad \xx
+  \in \gamma_i,
+  \label{eqn:bieTime}
+\end{align}
+where $S_{ij}$ is the Stokes single-layer potential and $\ff_j$ is the
+membrane forces on the $j^{\mathrm{th}}$ body. Classically, the membrane
+force includes a bending and tension force, but other forces, such as
+adhesion~\cite{qua-vee-you2019}, can be included.
+
+High-fidelity discretizations of equation~\eqref{eqn:bieTime} must address
+nearly-singular integrands, numerical stiffness, multiple time scales,
+and high-order derivatives. By using a near-singular integration scheme,
+adaptive high-order time stepping, and Fourier differentiation, these
+challenges have been addressed by PI Quaife~\cite{qua-bir2014,
+qua-bir2016}. Figure~\ref{fig:stenosis} a stable simulation of a vesicle
+passing through a constricted geometry.
+
+\begin{wrapfigure}[]{l}{0.3\textwidth}
+  \centering
+  \includegraphics{figs/stenosisSnapsTime1.pdf}
+  \includegraphics{figs/stenosisSnapsTime2.pdf}
+  \includegraphics{figs/stenosisSnapsTime3.pdf}
+  \includegraphics{figs/stenosisSnapsTime4.pdf}
+  \caption{{fig:stenosis}Snapshots of a single vesicle in a constricted
+  tube.  The boundary condition on the solid wall (plotted in blue) at
+  the inlet and outlet is Gaussian-shaped, and on the remainder of the
+  solid wall is zero.  The vesicle is initially $2.3$ times larger than
+  the size of the constriction.}
+\end{wrapfigure}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Summary}
@@ -659,6 +650,9 @@ in charged semi-permeable vesicles.
 \subsubsection{Influence of membrane compositions and geometries on
 osmophoresis}
 \label{subsubsec:influence_membrane_compositions}
+
+\todo[inline]{Reviewer 3 wanted to wsee the size and number of giant
+unilamellar vesicles (GUVs), number of tests}
 It is reported that the solvent permeability varies largely across the
 types of lipids and lipid composition, implying that the osmophoresis
 will also be sensitive to the types and compositions of semipermeable
@@ -880,7 +874,7 @@ of a vesicle.  PI Young will incorporate the solute gradient and the
 water flux in \S\ref{subsubsec:aim1_math} into the poroelastic model
 summarized in \S\ref{subsec:math_modeling} to investigate how interior
 poroelasticity may modify the osmophoretic characteristics of a vesicle
-in non-electrolytic solution.  The dependence of osmophoresis on the
+in non-electrolytic solution. The dependence of osmophoresis on the
 viscosity and vesicle radius may be affected by both the slip velocity
 and the poroelasticity of the interior fluid. 
 
@@ -894,9 +888,10 @@ Shin will use microfluidic tools to measure the slip coefficient of a
 semipermeable membrane with soft porous materials filled inside. For
 example, it is possible to trap a vesicle under a shear flow with
 different fluids enclosed~\cite{shin2015}. It is also possible to
-measure the slip velocity on the vesicle membrane using PIV, which will
-be utilized to examine how the slip velocity depends on the
-poroelasticity of the interior structures.
+measure the slip velocity on the vesicle membrane using PIV,
+\todo[inline]{Reviewer 1 wanted us to describe how PIV will be used to
+compute slip velocities.} which will be utilized to examine how the
+slip velocity depends on the poroelasticity of the interior structures.
 
 In addition, the permeability $\kappa$ in the water flux $j_w$
 (equation~\eqref{eq:jw}) may depend on the poroelastic model for the
@@ -1062,6 +1057,10 @@ spaces}
 \label{subsubsec:delivery_drug_cargos}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \todo[inline]{Reviewer 1 was critical of the drug delivery section.}
+\todo[inline]{Reviewer 2 was critical of the undeveloped validation in
+this section}
+\todo[inline]{Reviewer 3 wanted to know the size and dimension of the
+pores and target area}
 {\em In vivo} targeted drug delivery requires drug molecules to
 accumulate within a target zone~\cite{bae2011}. 
 %%  	
@@ -1136,6 +1135,9 @@ and travel funds, we include funds for the various materials required to
 perform the experiments: we need to purchase standard materials (e.g.
 lipids, soft lithography materials, glassware, tubing, etc.), which will
 be regular expenditures.
+\todo[inline]{Reviewer 3 wanted to see a multiple PI leadership
+arrangement (i.e., such as communication plan and conflict resolution,
+andà) is missing.}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1145,6 +1147,10 @@ be regular expenditures.
 \vspace*{-7pt}
 
 \todo[inline]{Reviewer 1 was critical of the educational impact}
+\todo[inline]{Reviewer 3 was concerned with the assessment process for
+outreach activities lack details. There is no indication of number of
+high school students that will be involved. What type of learning
+assessments will be measured?}
 
 An important component of this proposal is the interdisciplinary
 education and training of both undergraduate and graduate students. The
@@ -1241,6 +1247,6 @@ modeling, and complex flows.
 %\bibliographystyle{plain}
 \bibliographystyle{unsrt}
 
-\bibliography{bibliography_SSd,AM2015}
+\bibliography{bibliography_SSd,AM2015,bibQuaife}
 
 \end{document}
