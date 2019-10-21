@@ -19,6 +19,7 @@ citecolor = {blue}
 
 \usepackage[T1]{fontenc}
 \usepackage{ae,aecompl}
+\usepackage[font=footnotesize]{caption}
 
 %%\topmargin=-13.5mm
 %\topmargin=-14.0mm
@@ -264,7 +265,7 @@ numerical simulations in this project provide a compelling example of
 the importance of theoretical modeling. The proposed experimental and
 modeling approaches will lead to a better understanding of osmophoresis
 and its roles in cellular dynamics and propulsion.  Development of
-mathematical analysis and numerical methods to understand these
+mathematical analysis, and numerical methods to understand these
 processes will be of great benefit for understanding experimental
 observations and improving technology.  The concepts and methods
 described here go beyond the context of osmophoresis and extend to other
@@ -272,7 +273,7 @@ problems featuring mechanically induced cellular function.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Preliminary Results\label{sec:preliminary_results}} The PIs
-have research capabilities to conduct both experiments (SS) modeling
+have research capabilities to conduct both experiments (SS), modeling
 (YNY), and simulations (BQ) to investigate the motion of colloidal
 particles via solute gradients.  Using the developed experimental setup
 and numerical modeling, the PIs propose to investigate osmophoresis as a
@@ -283,12 +284,11 @@ propulsion mechanism for both vesicles and biological cells.
 \label{subsection:exp_tools}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Microfluidics for evaluating the motion of particles driven by chemical gradients\label{subsubsec:microfluidics}}
-PI Shin recently has demonstrated a microfluidic tool for quantifying
-colloidal migration induced by solute gradients that can be easily
-compared to an analytical solution for the transient solute
-concentration profile in a finite
-space~\cite{shin2016,shin2017a,shin2017b}. The device is comprised of a
-shallow dead-end pore connected to a large main channel
+PI Shin has demonstrated a microfluidic tool for quantifying colloidal
+migration induced by solute gradients that can be easily compared to an
+analytical solution for the transient solute concentration profile in a
+finite space~\cite{shin2016,shin2017a,shin2017b}. The device is
+comprised of a shallow dead-end pore connected to a large main channel
 (Figure~\ref{fig:fig3}a).  To impose a solute gradient along the
 dead-end pore, we have used a microfluidic approach, where the entrance
 of the dead-end channel is connected to the main flow channel so that
@@ -317,12 +317,12 @@ that the advective disturbance from the main channel can be minimized.
 Furthermore, unlike electro- or thermo-phoresis where the external field
 gradient is typically constant, diffusion in a dead-end configuration is
 time dependent, as occurs when a change in chemical concentration occurs
-at the pore entrance. In order to observe the dynamics, experiments
-utilizing a step-like initial concentration profile are desired since
-the solution to diffusion equation in a finite space with a constant
-boundary condition is readily available.  We designed such microfluidic
-experiments (Figure~\ref{fig:fig3}b) by inserting in the main channel
-an immiscible fluid, e.g. an oil droplet or air bubble, to separate the
+at the pore entrance. To observe the dynamics, experiments utilizing a
+step-like initial concentration profile are desired since the solution
+to diffusion equation in a finite space with a constant boundary
+condition is readily available.  We designed such microfluidic
+experiments (Figure~\ref{fig:fig3}b) by inserting in the main channel an
+immiscible fluid, e.g.~an oil droplet or air bubble, to separate the
 leading solution, which fills in the dead-end channel with concentration
 $c_i$, with a second immiscible solution that has different solute
 conditions (concentration $c_o$) and contains the colloidal particles
@@ -339,30 +339,30 @@ obscure and compromise the results we propose to investigate.
 \subsubsection{Flow-induced synthesis of giant unilamellar vesicles (GUVs)\label{subsubsec:GUVs}}
 In addition to the conventional electroformation for producing giant
 unilamellar vesicles (GUVs), PI Shin has demonstrated a flow-based
-method to synthesize GUVs with a uniform vesicle diameter (Shin et al.
-2015).  It is known that a fusion between suspended lipid vesicles is
-difficult to achieve without mediators such as membrane proteins or ions
-because the vesicles have extremely low equilibrium membrane
-tension~\cite{jahnig1996} and high poration energy~\cite{gao2008}.
-Nonetheless, vesicle fusion in the absence of mediators can also be
-achieved by mechanical forcing that is strong enough to induce membrane
-poration such as fluid shear stress.  By utilizing a unique vortex
-formation phenomenon in branched channels (Figure~\ref{fig:fig4}a) as a
-platform for capturing, stressing, and fusing the lipid vesicles, we
-have directly visualized using high-speed imaging the vesicle fusion
-events, induced solely by shear, on the time scale of submilliseconds
-(Figure~\ref{fig:fig4}b). A large vesicle with a size of up to $\approx
-10\mu$m can be achieved by the fusion of nanoscale vesicles.  This study
-has also shown that the size of GUVs can be controlled by simply
-changing the size of the channel dimensions. This method allows a rapid
-formation of GUVs with various size with ease whereas the
-electroformation method is time-consuming and requires additional
-devices such as an external power supply and electrodes.
+method to synthesize GUVs with a uniform vesicle
+diameter~\cite{shin2015}.  It is known that a fusion between suspended
+lipid vesicles is difficult to achieve without mediators such as
+membrane proteins or ions because the vesicles have extremely low
+equilibrium membrane tension~\cite{jahnig1996} and high poration
+energy~\cite{gao2008}.  Nonetheless, vesicle fusion in the absence of
+mediators can also be achieved by mechanical forcing that is strong
+enough to induce membrane poration such as fluid shear stress.  By
+utilizing a unique vortex formation phenomenon in branched channels
+(Figure~\ref{fig:fig4}a) as a platform for capturing, stressing, and
+fusing the lipid vesicles, we have directly visualized using high-speed
+imaging the vesicle fusion events, induced solely by shear, on the time
+scale of submilliseconds (Figure~\ref{fig:fig4}b). A large vesicle with
+a size of up to $\approx 10\mu$m can be achieved by the fusion of
+nanoscale vesicles.  This study has also shown that the size of GUVs can
+be controlled by simply changing the size of the channel dimensions.
+This method allows a rapid formation of GUVs with various size with ease
+whereas the electroformation method is time-consuming and requires
+additional devices such as an external power supply and electrodes.
 %
 \begin{figure}[h]
 \begin{center}
 \includegraphics*[keepaspectratio=true,scale=1]{figs/fig4.pdf}
-  \caption{label{fig:fig4}Formation of GUVs via vortex trapping in
+  \caption{\label{fig:fig4} Formation of GUVs via vortex trapping in
   branching channels~\cite{shin2015}. (a) Numerical simulation of the
   flow streamlines within the channel, revealing vortex breakdown near
   flow junctions.  (b) High-speed imaging of a GUV produced by merging
@@ -374,20 +374,22 @@ devices such as an external power supply and electrodes.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Preliminary Results (unpublished)
 \label{subsec:preliminary_results}}
+\todo[inline]{Section 2.1 is also called `Preliminary Results'. Sections
+need some restructuring.}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Motion of lipid vesicles in dead-end pores under osmotic
 pressure gradient}
 \label{subsubsec:osmophoresis_lipid_vesicles_deadend_pores}
 As a proof of concept, we have conducted preliminary experiments on
 osmophoresis using the dead-end method developed by PI
-SS~(\S\ref{subsubsec:microfluidics}).  The GUVs were made via standard
+Shin~(\S\ref{subsubsec:microfluidics}).  The GUVs were made via standard
 electroformation method, which has an average diameter of around $1
 \mu$m. The GUVs consist of DOPC
 (1,2-dioleoyl-sn-glycero-3-phosphocholine) and DPPE
 (1,2-dipalmitoyl-sn-glycero-3-phosphoethanolamine).  By establishing a
 concentration gradient of sucrose along the dead-end pores, we have
 observed a significant motion of GUVs directing toward the pore end with
-average speed of ${\cal O}(10 \mu$m/s), see Figure~\ref{fig:fig5}.
+average speed of $\mathcal{O}(10 \mu$m/s), (see Figure~\ref{fig:fig5}).
 Otherwise, in the absence of sucrose gradients, no vesicle motion into
 the pore is observed.
 %
@@ -412,14 +414,14 @@ directed vesicle motion as the vesicles are shown to move down the
 solute gradient even with non-electrolytic solutes.  Therefore, we
 believe we have shown the potential of osmophoresis to be a strong
 propulsion mechanism for any objects that are enclosed by a
-semipermeable membrane including vesicles (liposomes), cells and
+semipermeable membrane including vesicles (liposomes), cells, and
 bacteria.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Mathematical modeling of a soft porous drop in Stokes
 flow} 
 \label{subsubsec:math_modeling}
-PI YNY has worked on modeling and simulating vesicle
+PI Young has modeled and simulated vesicle
 hydrodynamics~\cite{Veerapaneni2011_PRL, Vlahovska2011_JFM} and
 electrohydrodynamics~\cite{HuLai2016_JCP, Nganguia2013_PRE}.  In
 addition, PI Young also investigated how the tension in the membrane may
@@ -444,7 +446,7 @@ $\phi_s$  $({\bf v}_s)$ the volume fraction (velocity) of the porous
 solid, $p$ the fluid pressure, $\nu_i$ the viscosity of interior fluid,
 $\xi$ the drag coefficient between the skeleton and the viscous fluid,
 $\tau_f$  the stress tensor in the interior fluid, and $\tau_s$ the
-stress tensor in the skeleton that may consist of both a viscous
+stress tensor in the skeleton. $\tau_s$ may consist of both a viscous
 dissipation $(\tau_{sv})$ that depends on the rate of strain of the
 porous solid and an elastic component $(\tau_{se})$ that depends on the
 strain of the skeleton.  Often the elastic component dominates the
@@ -457,31 +459,22 @@ in the skeleton can be approximated as
 with ${\bf u}_s$ the strain (displacement) of the skeleton, ${\bf
 \Lambda}$ the Lam\'e's first parameter that depends on both bulk modulus
 and shear modulus of the solid structure, $\mbox{tr}(\varepsilon)$ is
-the trace of the strain tensor, and ${\cal M}$ the p-wave modulus.
-Equations (\ref{eq:geq2}) are the Brinkman equations when the fluid
+the trace of the strain tensor, and ${\cal M}$ is the p-wave modulus.
+Equations~\eqref{eq:geq2} are the Brinkman equations when the fluid
 viscous stress is comparable to the pressure gradient and the drag
 force.  When the fluid viscous dissipation in equation (\ref{eq:geq2})
 is neglected (often done in solid mechanics) the resultant equations are
-Darcy's equations with a deformable underlying skeleton
-\cite{MacMinn2016_PRApplied}. Equations (\ref{eq:geq1}-\ref{eq:geq3})
-are the physically consistent description of a soft porous drop with a
-deformable skeleton immersed in a viscous fluid with a deformable fluid
-interface because the displacement of the fluid interface has to be
-considered consistently with the strain of the skeleton near the
-interface. Consistent boundary conditions for velocity at the boundary
-between Stokes flow and porous flow are adopted from
-refs.~\cite{Angot2017_PRE, MacMinn2016_PRApplied}.
-%
-\begin{wrapfigure}[16]{l}{3.75in}
-\centerline{\includegraphics[width=3.75in]{figs/DarcyDropUFlow0927aa.pdf}}
-\smallskip\par
-\centerline{\includegraphics[width=3.75in]{figs/BrinkmanDropUFlow0927aa.pdf}}
-\vspace{-7pt}
-\caption{\label{fig:DarcyDropUFlow0927} Streamlines around a soft Darcy
-  (top panels) and Brinkman (bottom panels) drop in a uniform streaming
-  flow.}
-\end{wrapfigure}
-%
+Darcy's equations with a deformable underlying
+skeleton~\cite{MacMinn2016_PRApplied}. Equations
+\eqref{eq:geq1}--\eqref{eq:geq3} are the physically consistent
+description of a soft porous drop with a deformable skeleton immersed in
+a viscous fluid with a deformable fluid interface because the
+displacement of the fluid interface has to be considered consistently
+with the strain of the skeleton near the interface. Consistent boundary
+conditions for the velocity at the boundary between the Stokes flow and
+the porous flow are adopted from refs.~\cite{Angot2017_PRE,
+MacMinn2016_PRApplied}.
+
 Figure~\ref{fig:DarcyDropUFlow0927}a illustrates the flow around a soft
 Darcy drop in a uniform streaming flow (from left to right), obtained by
 solving equations~\eqref{eq:geq1}--\eqref{eq:geq3} with axial symmetry
@@ -502,6 +495,17 @@ a saddle point that is often observed in non-Newtonian fluid under
 shear.  As permeability increases (right panel in
 Figure~\ref{fig:DarcyDropUFlow0927}b) the flow goes straight though the
 drop as in the Darcy drop case.
+%
+\begin{wrapfigure}[16]{l}{3.75in}
+\centerline{\includegraphics[width=3.75in]{figs/DarcyDropUFlow0927aa.pdf}}
+\smallskip\par
+\centerline{\includegraphics[width=3.75in]{figs/BrinkmanDropUFlow0927aa.pdf}}
+\vspace{-7pt}
+\caption{\label{fig:DarcyDropUFlow0927} Streamlines around a soft Darcy
+  (top panels) and Brinkman (bottom panels) drop in a uniform streaming
+  flow.}
+\end{wrapfigure}
+%
 
 \noindent
 \underline{{\bf Summary:}}
@@ -584,7 +588,7 @@ Since the osmophoresis still lacks an experimental characterization, it
 is imperative to quantify the efficacy of osmophoresis using various
 parameters. As proven from the preliminary results in
 Figure~\ref{fig:fig5} the microfluidic environment will allow us to
-characterize transient dynamics of osmophoresis with ease.  PI SS will
+characterize transient dynamics of osmophoresis with ease.  PI Shin will
 utilize the dead-end method to evaluate osmophoresis of semipermeable
 vesicles shown in Figure(\ref{fig:Microfluidic_dead-end}).  Various
 types of solutes and solute concentrations will be tested to quantify
@@ -652,10 +656,10 @@ the cell membrane. The governing equations in this model are
 \vspace*{-10pt}
 \centerline{\includegraphics[width=1.6in]{figs/math_model_illustrate.pdf}}
 %\vspace*{-12pt}
-\caption{\label{fig:math_model_illustration} \footnotesize Sketch of the
-  mathematical model. $\Gamma$ is the membrane as a function of membrane
-  position ${\bf X}(s,t)$. Subscripts $i$ ($e$) denote interior
-  (exterior) variables.}
+\caption{\label{fig:math_model_illustration} Sketch of the mathematical
+  model. $\Gamma$ is the membrane as a function of membrane position
+  ${\bf X}(s,t)$. Subscripts $i$ ($e$) denote interior (exterior)
+  variables.}
 \end{wrapfigure}
 %
 with $\nu$ the fluid viscosity,  ${\bf u}$ the velocity, $p$ the
@@ -731,9 +735,8 @@ inside~\cite{Mori2017_arXiv}.
 \vspace*{-10pt}
 \centerline{\includegraphics[width=1.2in]{figs/Mori2017_arXiv_fig7a.pdf}}
 \vspace*{-12pt}
-\caption{\label{fig:Mori_fig7} \footnotesize An oblate drop drifts in a
-  weak electrolytic solutions under an electric
-  field~\cite{Mori2017_arXiv}.}
+\caption{\label{fig:Mori_fig7} An oblate drop drifts in a weak
+  electrolytic solutions under an electric field~\cite{Mori2017_arXiv}.}
 \end{wrapfigure}
 % 
 
@@ -800,10 +803,10 @@ various inner fluids (such as hydrogels) on demand
 \vspace*{-7pt}
 \centerline{\includegraphics[width=1.7in]{figs/ConfocalImage.pdf}}
 \vspace*{-8pt}
-\caption{\label{fig:ConfocalImage} \footnotesize (a) A confocal image of
-  a eukaryotic cell containing actin filaments (red) and microtubules
-  (green).  (b) Microfluidic synthesis of vesicles encapsulated with a
-  different fluid from the exterior~\cite{stachowiak2008}.}
+\caption{\label{fig:ConfocalImage} (a) A confocal image of a eukaryotic
+  cell containing actin filaments (red) and microtubules (green).  (b)
+  Microfluidic synthesis of vesicles encapsulated with a different fluid
+  from the exterior~\cite{stachowiak2008}.}
 \end{wrapfigure}
 %
 PI Shin  will also utilize recently-developed centrifuge method to make
@@ -903,8 +906,8 @@ vesicles for the experiments (Figure~\ref{fig:Multilamellar}).
 %\vspace*{-5pt}
 \centerline{\includegraphics[width=1.8in]{figs/Multilamellar.pdf}}
 %\vspace*{-8pt}
-\caption{\footnotesize Multilamellar vesicles (Soft Matter Electron Microscopy Lab, University of Bayreuth).}
-\label{fig:Multilamellar}
+\caption{ \label{fig:Multilamellar} Multilamellar vesicles (Soft Matter
+  Electron Microscopy Lab, University of Bayreuth).}
 \end{wrapfigure}
 %
 \cite{szoka1980}. 
@@ -961,8 +964,8 @@ chemical gradients and targeted drug delivery in hard-to-reach spaces.
 \vspace*{-15pt}
 \centerline{\includegraphics[width=1.8in]{figs/self-organization.pdf}}
 \vspace*{-15pt}
-\caption{\label{fig:self-organization} \footnotesize Self-organization
-  of osmophoretic vesicles, similar to the self-organization of swimmers
+\caption{\label{fig:self-organization} Self-organization of osmophoretic
+  vesicles, similar to the self-organization of swimmers
   in~\cite{Nikolov2016_COCIS}.}
 \end{wrapfigure}
 %
@@ -1014,9 +1017,9 @@ accumulate within a target zone~\cite{bae2011}.
 \vspace*{-13pt}
 \centerline{\includegraphics[width=2.2in]{figs/DeepPores.pdf}}
 \vspace*{-11pt}
-\caption{\label{fig:DeepPores} \footnotesize (a) Deep pores in
-  intestinal villi, (b) targeted delivery of drug cargos in deep
-  dead-end pores via osmophoresis.}
+\caption{\label{fig:DeepPores} (a) Deep pores in intestinal villi, (b)
+  targeted delivery of drug cargos in deep dead-end pores via
+  osmophoresis.}
 \end{wrapfigure}
 The target areas are often located within deep pores such as intestine
 (illustrated in Figure~\ref{fig:DeepPores}a), skin, lung, etc. In
@@ -1051,8 +1054,8 @@ optimal cargo vesicles for targeted delivery.
 \vspace*{-15pt}
 \centerline{\includegraphics[width=3.1in]{figs/timeline.pdf}}
 \vspace*{-8pt}
-\caption{\footnotesize Schedule and milestones: Timeline for collaborative research activities.}
-\label{fig:ScheduleMilestones}
+\caption{\label{fig:ScheduleMilestones} Schedule and milestones:
+  Timeline for collaborative research activities.}
 \end{wrapfigure}
 %
 The PIs will structure our work in steps to build synergies as we
