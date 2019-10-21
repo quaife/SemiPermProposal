@@ -19,7 +19,17 @@ citecolor = {blue}
 
 \usepackage[T1]{fontenc}
 \usepackage{ae,aecompl}
-\usepackage[font=footnotesize]{caption}
+\usepackage[labelfont=it,,textfont=it,font=footnotesize]{caption}
+\captionsetup{belowskip=-20pt}
+%
+%\newcommand{\subfigimg}[3][,]{%
+%  \setbox1=\hbox{\includegraphics[#1]{#3}}% Store image in box
+%  \leavevmode\rlap{\usebox1}% Print image
+%  \rlap{\hspace*{-10pt}\raisebox{\dimexpr\ht1-0\baselineskip}{
+%  \scriptsize #2}}% Print label
+%  \phantom{\usebox1}% Insert appropriate spacing
+%}
+
 
 %%\topmargin=-13.5mm
 %\topmargin=-14.0mm
@@ -148,7 +158,7 @@ which is analogous to how a jet engine acquires its thrust by propelling
 the air backwards (Figure~\ref{fig:illustration}b). 
 \begin{figure}[h]
 \begin{center}
-\includegraphics*[keepaspectratio=true,scale=0.45]{figs/Illustration_Osmosis.pdf}
+\includegraphics*[keepaspectratio=true,width=\textwidth]{figs/Illustration_Osmosis.pdf}
 \caption{Osmophoresis: a biological jet engine powered by chemical
   gradients. (a) A semi-permeable vesicle can uptake fluid from the
   front and expel fluid to the rear due to osmotic pressure imbalance
@@ -336,7 +346,10 @@ condition is reached (Figure~\ref{fig:fig3}c); such a delay would
 obscure and compromise the results we propose to investigate.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{Flow-induced synthesis of giant unilamellar vesicles (GUVs)\label{subsubsec:GUVs}}
+\subsubsection{Flow-induced synthesis of giant unilamellar vesicles
+(GUVs)}
+\label{subsubsec:GUVs}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 In addition to the conventional electroformation for producing giant
 unilamellar vesicles (GUVs), PI Shin has demonstrated a flow-based
 method to synthesize GUVs with a uniform vesicle
@@ -372,14 +385,10 @@ additional devices such as an external power supply and electrodes.
 %%  	
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Preliminary Results (unpublished)
-\label{subsec:preliminary_results}}
-\todo[inline]{Section 2.1 is also called `Preliminary Results'. Sections
-need some restructuring.}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Motion of lipid vesicles in dead-end pores under osmotic
 pressure gradient}
 \label{subsubsec:osmophoresis_lipid_vesicles_deadend_pores}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 As a proof of concept, we have conducted preliminary experiments on
 osmophoresis using the dead-end method developed by PI
 Shin~(\S\ref{subsubsec:microfluidics}).  The GUVs were made via standard
@@ -418,9 +427,9 @@ semipermeable membrane including vesicles (liposomes), cells, and
 bacteria.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{Mathematical modeling of a soft porous drop in Stokes
-flow} 
-\label{subsubsec:math_modeling}
+\subsection{Mathematical modeling of a soft porous drop in Stokes flow} 
+\label{subsec:math_modeling}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 PI Young has modeled and simulated vesicle
 hydrodynamics~\cite{Veerapaneni2011_PRL, Vlahovska2011_JFM} and
 electrohydrodynamics~\cite{HuLai2016_JCP, Nganguia2013_PRE}.  In
@@ -432,12 +441,17 @@ proteins and enzymes, ions, and filaments) often modeled as a soft
 porous structure immersed in a viscous fluid.  Such intracellular soft
 porous medium can be modeled as a two-phase fluid system, with a fluid
 phase (subscript $``f"$) and a soft solid structure phase (subscript
-$``s"$).  The governing equations for the two-phase system are
+$``s"$).  The governing equations for the two-phase system
+are~\cite{Young2019_PRF}
+\todo[inline]{Yuan: This is your paper with Miksis and Mori. Is this the
+correct one?}
 \begin{align}
 \label{eq:geq1}
 \frac{\partial \phi_f}{\partial t} + \nabla \cdot \left({\bf v}_f \phi_f\right) &= 0,\;\; \nabla \cdot \left(\phi_f {\bf v}_f + \phi_s {\bf v}_s \right) =0,\;\;\phi_f + \phi_s = 1,\\
+%
 \label{eq:geq2}
 \nabla \cdot {\tau}_f -\phi_f \nabla p +\xi\left({\bf v}_f - {\bf v}_s\right) &=0,\;\; \tau_f\equiv \frac{\nu_i}{2}\left(\nabla {\bf v}_f + \left(\nabla{\bf v}_f\right)^T\right), \\
+%
 \label{eq:geq3}
 \nabla \cdot {\tau}_s-\phi_s \nabla p -\xi \left({\bf v}_s - {\bf v}_f\right) &=0,\;\; \tau_s\equiv \tau_{sv}+\tau_{se},
 \end{align}
@@ -456,6 +470,17 @@ in the skeleton can be approximated as
 \tau_s &\approx \tau_{se} = \bf{\Lambda}\mbox{tr}(\bf{\varepsilon}) \bf{I} + ({\cal M}-\Lambda) \bf{\varepsilon},\;\; 
 {\bf \varepsilon} = \frac{1}{2}\left[\nabla {\bf u}_s + \left(\nabla {\bf u}_s\right)^T\right],
 \end{align}
+%
+\begin{wrapfigure}[16]{l}{3.75in}
+\centerline{\includegraphics[width=3.75in]{figs/DarcyDropUFlow0927aa.pdf}}
+\smallskip\par
+\centerline{\includegraphics[width=3.75in]{figs/BrinkmanDropUFlow0927aa.pdf}}
+\vspace{-7pt}
+\caption{\label{fig:DarcyDropUFlow0927} Streamlines around a soft Darcy
+  (top panels) and Brinkman (bottom panels) drop in a uniform streaming
+  flow.}
+\end{wrapfigure}
+%
 with ${\bf u}_s$ the strain (displacement) of the skeleton, ${\bf
 \Lambda}$ the Lam\'e's first parameter that depends on both bulk modulus
 and shear modulus of the solid structure, $\mbox{tr}(\varepsilon)$ is
@@ -475,37 +500,30 @@ conditions for the velocity at the boundary between the Stokes flow and
 the porous flow are adopted from refs.~\cite{Angot2017_PRE,
 MacMinn2016_PRApplied}.
 
-Figure~\ref{fig:DarcyDropUFlow0927}a illustrates the flow around a soft
-Darcy drop in a uniform streaming flow (from left to right), obtained by
-solving equations~\eqref{eq:geq1}--\eqref{eq:geq3} with axial symmetry
-in the small-strain limit. When the Darcy drop is not permeable, the
-streamlines go around the drop as in the case of a viscous
-drop~\cite{DavisStone1993_CES, GLeal_AdvancedTransportPhenomena}. At an
-intermediate permeability, flow can penetrate through the soft Darcy
-drop, and the streamlines are calculated to be parallel to the streaming
-direction ($z$-axis in this case). At high permeability the streamlines
-go through the drop as if there is no resistance from the skeleton to
-the streaming flow.  Figure~\ref{fig:DarcyDropUFlow0927}b summarize the
-flow around a soft Brinkman drop in a uniform streaming flow with
-increasing permeability.  We note that in the limit of zero
-permeability, the flow around a Brinkman drop is almost identical to
-that around a Darcy drop (Figure~\ref{fig:DarcyDropUFlow0927}a).  At
-intermediate permeability the flow around a soft Brinkman drop contains
-a saddle point that is often observed in non-Newtonian fluid under
-shear.  As permeability increases (right panel in
-Figure~\ref{fig:DarcyDropUFlow0927}b) the flow goes straight though the
-drop as in the Darcy drop case.
-%
-\begin{wrapfigure}[16]{l}{3.75in}
-\centerline{\includegraphics[width=3.75in]{figs/DarcyDropUFlow0927aa.pdf}}
-\smallskip\par
-\centerline{\includegraphics[width=3.75in]{figs/BrinkmanDropUFlow0927aa.pdf}}
-\vspace{-7pt}
-\caption{\label{fig:DarcyDropUFlow0927} Streamlines around a soft Darcy
-  (top panels) and Brinkman (bottom panels) drop in a uniform streaming
-  flow.}
-\end{wrapfigure}
-%
+The top row of Figure~\ref{fig:DarcyDropUFlow0927} illustrates the flow
+around a soft Darcy drop in a uniform streaming flow (from left to
+right), obtained by solving equations~\eqref{eq:geq1}--\eqref{eq:geq3}
+with axial symmetry in the small-strain limit. When the Darcy drop is
+not permeable, the streamlines go around the drop as in the case of a
+viscous drop~\cite{DavisStone1993_CES,
+GLeal_AdvancedTransportPhenomena}. At an intermediate permeability, flow
+can penetrate through the soft Darcy drop, and the streamlines are
+calculated to be parallel to the streaming direction ($z$-axis in this
+case). At high permeability the streamlines go through the drop as if
+there is no resistance from the skeleton to the streaming flow.  The
+bottom row of Figure~\ref{fig:DarcyDropUFlow0927} summarize the flow
+around a soft Brinkman drop in a uniform streaming flow with increasing
+permeability.  We note that in the limit of zero permeability, the flow
+around a Brinkman drop is almost identical to that around a Darcy drop.
+At intermediate permeability the flow around a soft Brinkman drop
+contains a saddle point that is often observed in non-Newtonian fluid
+under shear.  As permeability increases the flow goes straight though
+the drop as in the Darcy drop case.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{High-fidelity numerical simulations of suspensions} 
+\label{subsec:numerics}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \noindent
 \underline{{\bf Summary:}}
@@ -518,10 +536,10 @@ osmophoresis remains relatively poorly quantified in terms of its roles
 in biological fluid dynamics. 
 
 In this proposal the PIs will first investigate osmophoresis as a
-mechanical process and quantify the osmophoretic flow by both
-experiments and modeling.  Results from these proposed research in
-\S\ref{subsec:aim1} will provide a quantitative description of
-osmophoresis.  PI Shin has state-of-the-art experimental tools to
+mechanical process and quantify the osmophoretic flow with experiments,
+modeling, and numerical simulations.  Results from these proposed
+research in \S\ref{subsec:aim1} will provide a quantitative description
+of osmophoresis.  PI Shin has state-of-the-art experimental tools to
 quantify osmophoresis of a phospholipid vesicle in various microfluidic
 configurations.  In particular, the microfluidic configurations
 discussed in \S\ref{subsubsec:osmophoresis_lipid_vesicles_deadend_pores}
@@ -533,17 +551,20 @@ incorporated the porous medium (either Darcy or Brinkman fluid) enclosed
 inside a viscous drop or a vesicle.  This model allows the porous
 structure to deform along with deformable membrane in a dynamic fluid
 flow, thus making it possible to study osmophoresis of a vesicle or a
-cell (see \S\ref{subsubsec:aim1_math}). 
+cell (see \S\ref{subsubsec:aim1_math}).  Finally, PI Quaife has
+developed high-fidelity numerical methods to simulate vesicle
+suspensions in both confined and unconfined geometries (see \S\ref{}).
 
-By combining both microfluidic experiments and theoretical modeling, the
-PIs aim to first understand osmophoresis quantified by the migration
-speed and its dependence on various parameters such as vesicle size,
-vesicle deformation, fluid viscosity, etc. The model and simulations
-will be validated by carefully comparing against experiments.  Once the
-underlying physics of osmophoresis is understood quantitatively, the PIs
-will focus on osmophoresis in biological environments and self-assembly
-of osmophoretic particles in relation to biological processes such as
-targeted cargo transport and drug delivery.
+By combining microfluidic experiments, theoretical modeling, and
+numerical simulations, the PIs aim to first understand osmophoresis
+quantified by the migration speed and its dependence on various
+parameters such as vesicle size, vesicle deformation, fluid viscosity,
+etc. The model and simulations will be validated by carefully comparing
+against experiments.  Once the underlying physics of osmophoresis is
+understood quantitatively, the PIs will focus on osmophoresis in
+biological environments and self-assembly of osmophoretic particles in
+relation to biological processes such as targeted cargo transport and
+drug delivery.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Proposed Research\label{sec:ProposedResearch}}
@@ -819,7 +840,9 @@ to further establish a model for vesicles under realistic conditions.
  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Modeling of the osmophoresis of a vesicle filled with
-poroelastic fluid\label{subsubsec:math_model_porous_vesicle}}
+poroelastic fluid}
+\label{subsec:math_model_porous_vesicle}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 In Yao and Mori's model (summarized in \S \ref{subsubsec:aim1_math}) the
 continuity of the tangential fluid velocity across the semipermeable
 membrane is used.  This is reasonable when the membrane is immersed in
@@ -829,12 +852,12 @@ flow~\cite{MacMinn2016_PRApplied, Angot2017_PRE}.  It is not clear how
 such a slip velocity on the membrane separating the exterior viscous
 Stokes flow from the interior porous flow might affect the osmophoresis
 of a vesicle.  PI Young will incorporate the solute gradient and the
-water flux in \S \ref{subsubsec:aim1_math} into the poroelastic model
-summarized in \S \ref{subsubsec:math_modeling} to investigate how
-interior poroelasticity may modify the osmophoretic characteristics of a
-vesicle in non-electrolytic solution.  The dependence of osmophoresis on
-the viscosity and vesicle radius may be affected by both the slip
-velocity and the poroelasticity of the interior fluid. 
+water flux in \S\ref{subsubsec:aim1_math} into the poroelastic model
+summarized in \S\ref{subsec:math_modeling} to investigate how interior
+poroelasticity may modify the osmophoretic characteristics of a vesicle
+in non-electrolytic solution.  The dependence of osmophoresis on the
+viscosity and vesicle radius may be affected by both the slip velocity
+and the poroelasticity of the interior fluid. 
 
 By comparing between modeling and experiments the PIs will include the
 slip velocity on the membrane as an additional characterization of
