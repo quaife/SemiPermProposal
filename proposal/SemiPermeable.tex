@@ -500,40 +500,34 @@ the drop as in the Darcy drop case.
 \subsection{High-fidelity numerical simulations of suspensions} 
 \label{subsec:numerics}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-Vesicle suspensions in a Stokesian fluid can be reformulated as an
-integral equation formulation~\cite{qua-bir2014, qua-bir2016}. A no-slip
-boundary condition imposed on the $i^{\mathrm{th}}$ vesicle is 
-\begin{align}
-  \frac{d\xx_i}{dt} = \sum_{j=1}^{m} \SS_{ij}[\ff_j](\xx), \quad \xx
-  \in \gamma_i,
-  \label{eqn:bieTime}
-\end{align}
-where $S_{ij}$ is the Stokes single-layer potential and $\ff_j$ is the
-membrane forces on the $j^{\mathrm{th}}$ body. Classically, the membrane
-force includes a bending and tension force, but other forces, such as
-adhesion~\cite{qua-vee-you2019}, can be included.
-
-High-fidelity discretizations of equation~\eqref{eqn:bieTime} must address
-nearly-singular integrands, numerical stiffness, multiple time scales,
-and high-order derivatives. By using a near-singular integration scheme,
-adaptive high-order time stepping, and Fourier differentiation, these
-challenges have been addressed by PI Quaife~\cite{qua-bir2014,
-qua-bir2016}. Figure~\ref{fig:stenosis} a stable simulation of a vesicle
-passing through a constricted geometry.
-
 \begin{wrapfigure}[]{l}{0.3\textwidth}
   \centering
   \includegraphics{figs/stenosisSnapsTime1.pdf}
   \includegraphics{figs/stenosisSnapsTime2.pdf}
   \includegraphics{figs/stenosisSnapsTime3.pdf}
   \includegraphics{figs/stenosisSnapsTime4.pdf}
-  \caption{{fig:stenosis}Snapshots of a single vesicle in a constricted
-  tube.  The boundary condition on the solid wall (plotted in blue) at
-  the inlet and outlet is Gaussian-shaped, and on the remainder of the
-  solid wall is zero.  The vesicle is initially $2.3$ times larger than
-  the size of the constriction.}
+  \caption{\label{fig:stenosis}Snapshots of a single vesicle in a
+  constricted tube.  The boundary condition on the solid wall is plotted
+  in blue.  The vesicle is initially $2.3$ times larger than the size of
+  the constriction.}
 \end{wrapfigure}
 
+Vesicle suspensions in a Stokesian fluid can be reformulated as an
+integral equation formulation~\cite{qua-bir2014, qua-bir2016}. A no-slip
+boundary condition imposed on a single vesicle with its boundary
+parameterized as $\xx(s,t)$ reveals the integro-differential equation
+$\dot{\xx} = \SS[\mathbf{F}_{\mathrm{mem}}](\xx)$, where $\SS$ is the
+Stokes single-layer potential integral operator and
+$\mathbf{F}_{\mathrm{mem}}$ is the membrane force.  The membrane force
+always includes a bending and tension force, and other forces, such as
+adhesion~\cite{qua-vee-you2019}, can be included.  Moreover, suspensions
+and bounded domains can be simulated (Figure~\ref{fig:stenosis}).
+High-fidelity discretizations of boundary integral equation formulations
+for vesicle dynamics must address nearly-singular integrands, numerical
+stiffness, multiple time scales, and high-order derivatives.  By using a
+near-singular integration scheme, adaptive high-order time stepping, and
+Fourier differentiation, these challenges have been addressed by PI
+Quaife~\cite{qua-bir2014, qua-bir2016}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Summary}
@@ -566,9 +560,8 @@ membrane in a dynamic fluid flow, thus making it possible to study
 osmophoresis of a vesicle or a cell (see \S\ref{subsubsec:aim1_math}).
 Finally, PI Quaife has developed high-fidelity numerical methods to
 simulate vesicle suspensions in both confined and unconfined geometries
-(see \S\ref{subsec:numerics}). \todo[inline]{Point to a section that is
-to be written about what will be done numerically in the proposed
-research.}
+(see \S\ref{subsec:numerics}). These methods will be developed further
+to describe suspensions of semi-permeable vesicles (see \S\ref{}).
 
 By combining microfluidic experiments, theoretical modeling, and
 numerical simulations, the PIs aim to first understand osmophoresis
@@ -583,28 +576,33 @@ drug delivery.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Proposed Research\label{sec:ProposedResearch}}
-\noindent
-{\bf Outstanding Issues:}
-%
+\begin{wrapfigure}[11]{l}{1.7in}
+\centerline{\includegraphics[width=1.6in]{figs/Microfluidic_dead-end.pdf}}
+\caption{\label{fig:Microfluidic_dead-end} A microfluidic dead-end setup
+  for characterizing osmophoresis under transient solute concentration
+  profile.}
+\end{wrapfigure}
 As described in Section 2, the main goal of this research is to
 elucidate osmophoresis quantitatively and address the potential impact
 of osmophoresis in various biological systems. To this end, our proposed
-research has three aims: {\bf Aim I}: Quantitative characterization of
-osmophoresis, {\bf Aim II}: Investigation of osmophoresis in model
-biological environments, and {\bf Aim III}: Application of osmophoresis
-in various systems. Aim I suggests quantifying osmophoresis under
-various conditions experimentally and theoretically, which will provide
-deeper understanding of the phenomenon. Aim II suggests exploring
-osmophoresis in realistic biological environments by considering various
-inclusions in the cytoplasm, the poroelastic behavior of the cytosol,
-and the multilamellarity of the membrane. Aim III seeks to identify
-possible utilization of osmophoresis in biological and biomedical
-applications such as biological self-organization guided by chemical
-gradients and targeted drug delivery in deep pore spaces.
+research will address three outstanding issues: {\bf Aim I}:
+Quantitative characterization of osmophoresis, {\bf Aim II}:
+Investigation of osmophoresis in model biological environments, and {\bf
+Aim III}: Application of osmophoresis in various systems. Aim I suggests
+quantifying osmophoresis under various conditions experimentally and
+theoretically, which will provide deeper understanding of the
+phenomenon. Aim II suggests exploring osmophoresis in realistic
+biological environments by considering various inclusions in the
+cytoplasm, the poroelastic behavior of the cytosol, and the
+multilamellarity of the membrane. Aim III seeks to identify possible
+utilization of osmophoresis in biological and biomedical applications
+such as biological self-organization guided by chemical gradients and
+targeted drug delivery in deep pore spaces.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Aim I: Characterization of osmophoresis}
 \label{subsec:aim1}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 To gain a quantitative understanding of the phenomena, we will
 characterize osmophoresis using controlled microfluidics experiments and
 computational modeling.
@@ -613,12 +611,7 @@ computational modeling.
 \subsubsection{Measurement of osmophoresis in controlled microfluidics
 environment}
 \label{subsubsec:measurement_osmophoresis}
-\begin{wrapfigure}[12]{l}{1.7in}
-\centerline{\includegraphics[width=1.6in]{figs/Microfluidic_dead-end.pdf}}
-\caption{\label{fig:Microfluidic_dead-end} A microfluidic dead-end setup
-  for characterizing osmophoresis under transient solute concentration
-  profile.}
-\end{wrapfigure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 Since the osmophoresis still lacks an experimental characterization, it
 is imperative to quantify the efficacy of osmophoresis using various
@@ -626,24 +619,15 @@ parameters. As proven from the preliminary results in
 Figure~\ref{fig:fig5} the microfluidic environment will allow us to
 characterize transient dynamics of osmophoresis with ease.  PI Shin will
 utilize the dead-end method to evaluate osmophoresis of semipermeable
-vesicles shown in Figure(\ref{fig:Microfluidic_dead-end}).  Various
-types of solutes and solute concentrations will be tested to quantify
-the osmophoretic mobility, which relates the osmophoretic velocity to
-the local solute gradient.  Mainly, non-electrolytic solutes (e.g.
-sucrose, glucose, etc.) will be used to induce local osmotic pressure
-gradient, but electrolytic solutes (e.g. NaCl, LiCl, NaOH, etc.) will
-also be employed to simultaneously induce diffusiophoresis so as to
-understand the mutual interaction of diffusiophoresis and osmophoresis
-in charged semi-permeable vesicles.
-
-%%  	
-\begin{wrapfigure}[12]{r}{1.8in}
-\vspace*{-10pt}
-\centerline{\includegraphics[width=1.6in]{figs/phase-separatedGUV.pdf}}
-\caption{\label{fig:phase-separatedGUV} A phase-separated POPC/SM
-  GUV~\cite{oglkecka2014}.}
-\end{wrapfigure}
-%
+vesicles shown in Figure~\ref{fig:Microfluidic_dead-end}.  Various types
+of solutes and solute concentrations will be tested to quantify the
+osmophoretic mobility, which relates the osmophoretic velocity to the
+local solute gradient.  Mainly, non-electrolytic solutes (e.g.~sucrose,
+glucose, etc.) will be used to induce local osmotic pressure gradient,
+but electrolytic solutes (e.g.~NaCl, LiCl, NaOH, etc.) will also be
+employed to simultaneously induce diffusiophoresis so as to understand
+the mutual interaction of diffusiophoresis and osmophoresis in charged
+semi-permeable vesicles.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -653,6 +637,14 @@ osmophoresis}
 
 \todo[inline]{Reviewer 3 wanted to wsee the size and number of giant
 unilamellar vesicles (GUVs), number of tests}
+%%  	
+\begin{wrapfigure}[13]{r}{1.8in}
+%\vspace*{-10pt}
+\centerline{\includegraphics[width=1.6in]{figs/phase-separatedGUV.pdf}}
+\caption{\label{fig:phase-separatedGUV} A phase-separated POPC/SM
+  GUV~\cite{oglkecka2014}.}
+\end{wrapfigure}
+%
 It is reported that the solvent permeability varies largely across the
 types of lipids and lipid composition, implying that the osmophoresis
 will also be sensitive to the types and compositions of semipermeable
@@ -675,20 +667,11 @@ PI Shin will also be utilizing the flow-induced vesicle formation method
 demonstrated in \S\ref{subsubsec:Influence_membrane_multilamellarity} to
 produce a uniform GUVs with various diameter.
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{Modeling of osmophoretic vesicle of single or multiple lipid components\label{subsubsec:aim1_math}}
-The cell deformation and propulsion due to an interplay between
-diffusive, osmotic and mechanical effects have been
-modeled~\cite{Blount2012_PRE, Vogl2014_JRSInterface, YaoMori2017_JCP}.
-In these model, the solute transports across the membrane to produce an
-osmotic pressure that gives rise to both deformation and propulsion of
-the cell membrane. The governing equations in this model are
-\begin{align}
-\nu \triangle {\bf u} - \nabla p + {\bf f} &=0, \;\nabla\cdot{\bf u} = 0, \; {\bf f}({\bf x},t) = \int_{\Gamma}{\bf F}_{\mbox{mem}}({\bf X})\delta\left({\bf x}-{\bf X}(s,t)\right)ds,\\
-\frac{\partial c}{\partial t} + \nabla\cdot\left({\bf u} c\right) &= \nabla\cdot\left(D\nabla c\right),\\
-\left({\bf u} c-D\nabla c\right)\cdot{\bf n} &= c\frac{\partial {\bf X}}{\partial t}\cdot{\bf n}+j_c+j_p \mbox{ on } \Gamma_i \mbox{ or } \Gamma_e,\;\;{\bf u} - \frac{\partial X}{\partial t} = j_w {\bf n} \mbox{ on } \Gamma,
-\end{align}
+\subsubsection{Modeling of osmophoretic vesicle of single or multiple
+lipid components}
+\label{subsubsec:aim1_math}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%  	
 %\vspace*{-5pt}
 \begin{wrapfigure}[14]{r}{1.8in}
@@ -701,8 +684,20 @@ the cell membrane. The governing equations in this model are
   variables.}
 \end{wrapfigure}
 %
+The cell deformation and propulsion due to an interplay between
+diffusive, osmotic, and mechanical effects have been
+modeled~\cite{Blount2012_PRE, Vogl2014_JRSInterface, YaoMori2017_JCP}.
+In these model, the solute transports across the membrane to produce an
+osmotic pressure that gives rise to both deformation and propulsion of
+the cell membrane. The governing equations in this model are
+\begin{align}
+\nu \triangle {\bf u} - \nabla p + {\bf f} &=0, \;\nabla\cdot{\bf u} =
+  0, \; {\bf f}({\bf x},t) = \int_{\Gamma}{\bf F}_{\mathrm{mem}}({\bf X})\delta\left({\bf x}-{\bf X}(s,t)\right)ds,\\
+\frac{\partial c}{\partial t} + \nabla\cdot\left({\bf u} c\right) &= \nabla\cdot\left(D\nabla c\right),\\
+\left({\bf u} c-D\nabla c\right)\cdot{\bf n} &= c\frac{\partial {\bf X}}{\partial t}\cdot{\bf n}+j_c+j_p \mbox{ on } \Gamma_i \mbox{ or } \Gamma_e,\;\;{\bf u} - \frac{\partial X}{\partial t} = j_w {\bf n} \mbox{ on } \Gamma,
+\end{align}
 with $\nu$ the fluid viscosity,  ${\bf u}$ the velocity, $p$ the
-pressure in fluid, ${\bf F}_{\mbox{mem}}$ is the membrane traction,
+pressure in fluid, ${\bf F}_{\mathrm{mem}}$ is the membrane traction,
 ${\bf f}$ the distributed membrane traction on grids around $\Gamma$
 characterized by the position vector ${\bf X}$, ${\bf n}$ the outward
 normal on $\Gamma$, $c$ the concentration of solute in the bulk, $D$ the
@@ -715,7 +710,7 @@ Figure~\ref{fig:math_model_illustration} where the interfacial
 quantities are in blue.
 
 In the immersed boundary framework, the membrane force $\mathbf{F}
-_{\mbox{mem}}$ consists of a bending force and a membrane tension
+_{\mathrm{mem}}$ consists of a bending force and a membrane tension
 modeled as an elastic force that minimizes the deviation in the total
 membrane length from the initial value. For an artificially synthesized
 vesicle, there is no reconstituted channels and therefore $j_c=j_p=0$.
@@ -725,7 +720,7 @@ principle, $j_w$ is found to be
 \begin{equation}
 \label{eq:jw}
  j_w =-\kappa\left(RT \llbracket c \rrbracket + 
-   \mathbf{F}_{\mbox{mem}} \cdot \mathbf{n}\right),
+   \mathbf{F}_{\mathrm{mem}} \cdot \mathbf{n}\right),
 \end{equation}
 with $\llbracket c \rrbracket$ denoting the jump in solute concentration $c$ across the
 membrane, $\kappa$ the water permeability constant, $R$ the gas
@@ -751,6 +746,16 @@ vesicle as it moves horizontally at the given flow rate.  If such an
 orthogonal displacement is less than the vesicle radius over the pore
 size, then there is very little possibility for osmophoresis of vesicles
 down the pores.
+%%  	
+%\vspace*{-5pt}
+\begin{wrapfigure}[11]{l}{1.2in}
+\vspace*{-10pt}
+\centerline{\includegraphics[width=1.2in]{figs/Mori2017_arXiv_fig7a.pdf}}
+\vspace*{-12pt}
+\caption{\label{fig:Mori_fig7} An oblate drop drifts in a weak
+  electrolytic solutions under an electric field~\cite{Mori2017_arXiv}.}
+\end{wrapfigure}
+% 
 
 For electrolytic solutes in polar (or weakly polar) solvents, the
 electrokinetic flow (due to the transport of ions/cations) may play an
@@ -769,16 +774,6 @@ a viscous drop under an electric field shown in
 Figure~\ref{fig:Mori_fig7} where an oblate drop drifts along the
 electric field with a quadrupole vortex flow
 inside~\cite{Mori2017_arXiv}.
-%%  	
-%\vspace*{-5pt}
-\begin{wrapfigure}[11]{l}{1.2in}
-\vspace*{-10pt}
-\centerline{\includegraphics[width=1.2in]{figs/Mori2017_arXiv_fig7a.pdf}}
-\vspace*{-12pt}
-\caption{\label{fig:Mori_fig7} An oblate drop drifts in a weak
-  electrolytic solutions under an electric field~\cite{Mori2017_arXiv}.}
-\end{wrapfigure}
-% 
 
 PI Young will extend this work to study the osmophoresis of a vesicle
 under a gradient in electrolytic solute and focus on the flow patterns
@@ -927,7 +922,7 @@ ${\bf u}_i = j_w {\bf n}_i$ and the solute flux across the $i$-th layer
 where the permeability $\kappa$ to solute molecules is assumed to be the
 same for all layers. The above equation is the same as the solute flux
 across the membrane except for the mechanically induced permeability
-${\bf F}_{mem}$, which is derived from a variational
+${\bf F}_{\mathrm{mem}}$, which is derived from a variational
 principle~\cite{YaoMori2017_JCP}.  By solving the above equation for the
 solute transport across an MLV with at least two bilayers, it is shown
 that the solute concentration leaked into the dispersion is well
